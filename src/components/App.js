@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
-      if (user) {
+      if (user !== null) {
         setIsLoggedIn(true);
         setUserObj({
           displayName: user.displayName,
@@ -19,6 +19,9 @@ function App() {
       }
       else {
         setIsLoggedIn(false);
+        setUserObj({
+          displayName: ""
+        });
       }
       setInit(true);
     })
